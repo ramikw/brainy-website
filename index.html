@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta -->
+  <title>Brainy — Active Learning App with Spaced Repetition</title>
+  <meta name="description" content="Brainy is a powerful active learning app combining notebook-style notes, flashcards, and the FSRS spaced repetition algorithm. Generate AI-powered study cards, sync across devices, and remember more — effortlessly." />
+  <meta name="keywords" content="active learning app, spaced repetition, flashcard app, FSRS algorithm, study app, AI flashcards, knowledge retention, Brainy app" />
+  <meta name="author" content="Brainy" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://brainylearn.app/" />
+
+  <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://brainylearn.app/" />
+  <meta property="og:title" content="Brainy — Active Learning App with Spaced Repetition" />
+  <meta property="og:description" content="Combine notebook-style notes, flashcards, and AI-powered study materials in one app. Built on the FSRS spaced repetition algorithm to maximize what you remember." />
+  <meta property="og:image" content="https://brainylearn.app/og-image.png" />
+  <meta property="og:site_name" content="Brainy" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://brainylearn.app/" />
+  <meta name="twitter:title" content="Brainy — Active Learning App with Spaced Repetition" />
+  <meta name="twitter:description" content="Combine notebook-style notes, flashcards, and AI-powered study materials in one app. Built on FSRS to maximize what you remember." />
+  <meta name="twitter:image" content="https://brainylearn.app/og-image.png" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Brainy",
+    "url": "https://brainylearn.app/",
+    "description": "Brainy is a powerful active learning app combining notebook-style notes, flashcards, and the FSRS spaced repetition algorithm with AI-powered study material generation.",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Windows, macOS, Linux, iOS, Android",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Spaced repetition with FSRS algorithm",
+      "AI-powered flashcard generation",
+      "Notebook-style note editor",
+      "Cloud sync across devices",
+      "Automatic backups",
+      "Multiple study modes"
+    ],
+    "sameAs": [
+      "https://github.com/ramikw/brainy"
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary-color: #2563eb;
+      --primary-color-shade-10: #1554e0;
+      --primary-color-shade-20: #124bc7;
+      --secondary-color-tint-10: #9b69f1;
+      --secondary-color: #7c3aed;
+      --secondary-color-shade-10: #6d28d9;
+      --text-color: #2b2d42;
+      --text-color-secondary: #6c757d;
+      --surface-background-color-tint-10: rgb(248, 248, 249);
+      --surface-background-color: #e6e9ec;
+      --surface-background-color-shade-10: #c9d0d6;
+      --surface-background-color-shade-20: #acb6c0;
+      --default-background-color: #ffffff;
+      --green-color: #0faa77;
+      --default-border-radius: 8px;
+      --default-transition-time: 0.2s;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Noto Sans", sans-serif;
+      font-optical-sizing: auto;
+      font-variation-settings: "wdth" 100;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.6;
+      background-color: var(--default-background-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── NAV ── */
+    nav {
+      width: 100%;
+      max-width: 800px;
+      padding: 20px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .nav-logo svg { width: 22px; height: 22px; }
+
+    .nav-link {
+      font-size: 0.875rem;
+      color: var(--text-color-secondary);
+      text-decoration: none;
+      transition: color var(--default-transition-time);
+    }
+    .nav-link:hover { color: var(--primary-color); }
+
+    /* ── HERO ── */
+    main {
+      width: 100%;
+      max-width: 800px;
+      padding: 48px 32px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--secondary-color);
+      background: #f3eeff;
+      border: 1px solid #e0d3ff;
+      border-radius: 100px;
+      padding: 4px 12px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      color: var(--text-color);
+      margin-bottom: 20px;
+      animation: fadeUp 0.5s 0.08s ease both;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-color-secondary);
+      max-width: 520px;
+      margin-bottom: 40px;
+      animation: fadeUp 0.5s 0.16s ease both;
+    }
+
+    /* ── TRUST PILLS ── */
+    .trust-pills {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 32px;
+      animation: fadeUp 0.5s 0.22s ease both;
+    }
+
+    .trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-color-secondary);
+    }
+
+    .trust-pill-divider {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--surface-background-color-shade-20);
+    }
+
+    .trust-pill-soon {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--secondary-color);
+      background: #f3eeff;
+      border: 1px solid #e0d3ff;
+      border-radius: 100px;
+      padding: 1px 6px;
+      margin-left: 2px;
+    }
+
+    body.dark .trust-pill-soon {
+      background: #2a1f45;
+      border-color: #3d2d6b;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 28px;
+      animation: fadeUp 0.5s 0.24s ease both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: var(--default-border-radius);
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      transition: all var(--default-transition-time);
+    }
+
+    .btn-primary {
+      background: var(--primary-color);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--primary-color-shade-10);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-secondary {
+      background: var(--surface-background-color-tint-10);
+      color: var(--text-color);
+      border: 1px solid var(--surface-background-color-shade-10);
+    }
+    .btn-secondary:hover {
+      background: var(--surface-background-color);
+      transform: translateY(-1px);
+    }
+
+    /* ── STORE BUTTONS ── */
+    .store-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 72px;
+      animation: fadeUp 0.5s 0.3s ease both;
+    }
+
+    .store-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-color-secondary);
+    }
+
+    .store-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .store-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: var(--default-border-radius);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--surface-background-color-shade-10);
+      background: var(--surface-background-color-tint-10);
+      color: var(--text-color);
+      cursor: not-allowed;
+      opacity: 0.75;
+      transition: all var(--default-transition-time);
+      user-select: none;
+    }
+
+    .store-btn:hover {
+      border-color: var(--surface-background-color-shade-20);
+      opacity: 0.9;
+    }
+
+    .store-btn-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.2;
+    }
+
+    .store-btn-sub {
+      font-size: 0.68rem;
+      font-weight: 400;
+      color: var(--text-color-secondary);
+    }
+
+    .store-btn-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .coming-soon-badge {
+      position: absolute;
+      top: -9px;
+      right: -6px;
+      background: var(--secondary-color);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    /* ── FEATURE CARDS ── */
+    .features {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 72px;
+      animation: fadeUp 0.5s 0.38s ease both;
+    }
+
+    .feature-card {
+      background: var(--surface-background-color-tint-10);
+      border: 1px solid var(--surface-background-color-shade-10);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: left;
+      transition: border-color var(--default-transition-time), box-shadow var(--default-transition-time);
+    }
+
+    .feature-card:hover {
+      border-color: var(--surface-background-color-shade-20);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    }
+
+    .feature-icon {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .feature-card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--text-color);
+    }
+
+    .feature-card p {
+      font-size: 0.82rem;
+      color: var(--text-color-secondary);
+      line-height: 1.5;
+    }
+
+    /* ── CONTACT ── */
+    .contact {
+      width: 100%;
+      max-width: 480px;
+      background: var(--surface-background-color-tint-10);
+      border: 1px solid var(--surface-background-color-shade-10);
+      border-radius: 12px;
+      padding: 28px 32px;
+      text-align: center;
+      animation: fadeUp 0.5s 0.4s ease both;
+    }
+
+    .contact h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .contact p {
+      font-size: 0.875rem;
+      color: var(--text-color-secondary);
+      margin-bottom: 14px;
+    }
+
+    .contact a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      text-decoration: none;
+      padding: 9px 18px;
+      border: 1px solid #bfdbfe;
+      border-radius: var(--default-border-radius);
+      background: #eff6ff;
+      transition: all var(--default-transition-time);
+    }
+
+    .contact a:hover {
+      background: #dbeafe;
+      border-color: var(--primary-color);
+    }
+
+    /* ── DARK MODE ── */
+    body.dark {
+      --text-color: #f5f7fa;
+      --text-color-secondary: #b0bcc9;
+      --primary-color-shade-10: #306bec;
+      --primary-color-shade-20: #3b73ed;
+      --secondary-color-shade-10: #9b69f1;
+      --secondary-color-tint-10: #6d28d9;
+      --border-color: #44464a;
+      --hover-border-color: #56585c;
+      --default-background-color: #242426;
+      --surface-background-color-tint-10: #2d2d2f;
+      --surface-background-color: #323234;
+      --surface-background-color-shade-10: #4b4b4e;
+      --surface-background-color-shade-20: #646468;
+      --surface-background-color-shade-30: #7d7d82;
+      --red-color: #ef4444;
+      --placeholder-color: #b8bec7;
+    }
+
+    body.dark .badge {
+      background: #2a1f45;
+      border-color: #3d2d6b;
+    }
+
+    body.dark .contact a {
+      background: #1e2d4a;
+      border-color: #2d4a7a;
+    }
+
+    body.dark .contact a:hover {
+      background: #253660;
+      border-color: var(--primary-color);
+    }
+
+    body.dark .feature-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    /* ── THEME TOGGLE ── */
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #theme-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--surface-background-color-shade-10);
+      background: var(--surface-background-color-tint-10);
+      color: var(--text-color-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--default-transition-time);
+      padding: 0;
+    }
+
+    #theme-btn:hover {
+      background: var(--surface-background-color);
+      color: var(--text-color);
+      border-color: var(--surface-background-color-shade-20);
+    }
+
+    #theme-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      nav, main { padding-left: 20px; padding-right: 20px; }
+      .btn-group { flex-direction: column; align-items: center; }
+      .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C8 2 5 5 5 9c0 2.4 1.1 4.5 2.9 5.9L8 18h8l.1-3.1C17.9 13.5 19 11.4 19 9c0-4-3-7-7-7z"/>
+        <path d="M9 21h6M10 18v3M14 18v3"/>
+      </svg>
+      Brainy
+    </a>
+    <div class="theme-toggle">
+      <button id="theme-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <div class="badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      Active Learning · Spaced Repetition
+    </div>
+
+    <h1>Learn smarter,<br /><span>remember more</span></h1>
+
+    <p class="subtitle">
+      Brainy is an active learning app that combines notebook-style notes, flashcards, and the FSRS spaced repetition algorithm — so what you study actually sticks.
+    </p>
+
+    <div class="btn-group">
+      <a class="btn btn-primary" href="https://github.com/ramikw/brainy/releases" title="Download Brainy" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+      <a class="btn btn-secondary" href="https://github.com/ramikw/brainy" target="_blank" title="View source on GitHub">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        GitHub
+      </a>
+      <a class="btn btn-secondary" href="https://help.brainylearn.app/" target="_blank" title="Read the documentation">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Documentation
+      </a>
+    </div>
+
+    <!-- Store Buttons -->
+    <div class="store-section">
+      <span class="store-label">Also coming to</span>
+      <div class="store-buttons">
+
+        <!-- Google Play -->
+        <span class="store-btn">
+          <span class="coming-soon-badge">Coming Soon</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.18 1.07 13.36 11.25 3.18 21.43A1.5 1.5 0 0 1 2 20V2.5a1.5 1.5 0 0 1 1.18-1.43Z" fill="#EA4335"/>
+            <path d="m21.54 10.17-3.2-1.83-4.18 4.18 4.18 4.18 3.22-1.85a1.52 1.52 0 0 0 0-2.68Z" fill="#FBBC04"/>
+            <path d="m14.16 12.52-10.98 10.98A1.5 1.5 0 0 0 4 23.5a1.49 1.49 0 0 0 .73-.19l12.78-7.31-3.35-3.48Z" fill="#34A853"/>
+            <path d="M3.18 1.07 13.36 11.25l3.15-3.15L3.73.26A1.49 1.49 0 0 0 3 .07a1.5 1.5 0 0 0-.82 1Z" fill="#4285F4"/>
+          </svg>
+          <span class="store-btn-inner">
+            <span class="store-btn-sub">Get it on</span>
+            <span class="store-btn-name">Google Play</span>
+          </span>
+        </span>
+
+        <!-- App Store -->
+        <span class="store-btn">
+          <span class="coming-soon-badge">Coming Soon</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-2.18 1.27-2.16 3.79.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.37 2.79M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          <span class="store-btn-inner">
+            <span class="store-btn-sub">Download on the</span>
+            <span class="store-btn-name">App Store</span>
+          </span>
+        </span>
+
+        <!-- Microsoft Store -->
+        <span class="store-btn">
+          <span class="coming-soon-badge">Coming Soon</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h11.5v11.5H0z" fill="#F25022"/>
+            <path d="M12.5 0H24v11.5H12.5z" fill="#7FBA00"/>
+            <path d="M0 12.5h11.5V24H0z" fill="#00A4EF"/>
+            <path d="M12.5 12.5H24V24H12.5z" fill="#FFB900"/>
+          </svg>
+          <span class="store-btn-inner">
+            <span class="store-btn-sub">Get it from</span>
+            <span class="store-btn-name">Microsoft Store</span>
+          </span>
+        </span>
+
+      </div>
+    </div>
+
+    <section aria-label="Key features" class="features">
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3>Spaced Repetition</h3>
+        <p>FSRS algorithm schedules reviews at the perfect moment to maximize long-term retention.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <h3>Notebook + Flashcards</h3>
+        <p>Write notes and create flashcards, cloze deletions, and true/false cards in one place.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI Assistant</h3>
+        <p>Generate flashcards from PDFs and documents instantly, or ask questions about your content.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">☁️</div>
+        <h3>Cloud Sync & Backups</h3>
+        <p>Your data stays in sync across devices with automatic periodic backups for peace of mind.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔓</div>
+        <h3>Open Source</h3>
+        <p>Brainy is fully open source. Inspect the code, contribute, or build on top of it on <a href="https://github.com/ramikw/brainy" target="_blank" style="color:var(--primary-color);text-decoration:none;font-weight:600;">GitHub</a>.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>Cross-Platform</h3>
+        <p>Available on Windows, macOS, and Linux today — with iOS and Android support coming soon.</p>
+      </div>
+    </section>
+
+    <section aria-label="Contact" class="contact">
+      <h2>Get in touch</h2>
+      <p>Have a question, found a bug, or just want to say hello?</p>
+      <a href="mailto:support@brainylearn.app">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        support@brainylearn.app
+      </a>
+    </section>
+
+  </main>
+
+  <script>
+    const btn = document.getElementById('theme-btn');
+    const moon = document.getElementById('icon-moon');
+    const sun = document.getElementById('icon-sun');
+    const body = document.body;
+
+    // Respect system preference on first load, then remember user choice
+    const stored = localStorage.getItem('brainy-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (stored === 'dark' || (!stored && prefersDark)) setDark(true);
+
+    btn.addEventListener('click', () => setDark(!body.classList.contains('dark')));
+
+    function setDark(on) {
+      body.classList.toggle('dark', on);
+      moon.style.display = on ? 'none' : '';
+      sun.style.display  = on ? '' : 'none';
+      localStorage.setItem('brainy-theme', on ? 'dark' : 'light');
+    }
+  </script>
+
+</body>
+</html>
