@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta -->
+  <title>Privacy Policy & Terms of Service — Brainy</title>
+  <meta name="description" content="Brainy's privacy policy and terms of service — how we collect, use, and protect your data, and the terms governing use of the app." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://brainylearn.app/legal" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary-color: #2563eb;
+      --primary-color-shade-10: #1554e0;
+      --primary-color-shade-20: #124bc7;
+      --secondary-color-tint-10: #9b69f1;
+      --secondary-color: #7c3aed;
+      --secondary-color-shade-10: #6d28d9;
+      --text-color: #2b2d42;
+      --text-color-secondary: #6c757d;
+      --surface-background-color-tint-10: rgb(248, 248, 249);
+      --surface-background-color: #e6e9ec;
+      --surface-background-color-shade-10: #c9d0d6;
+      --surface-background-color-shade-20: #acb6c0;
+      --default-background-color: #ffffff;
+      --green-color: #0faa77;
+      --default-border-radius: 8px;
+      --default-transition-time: 0.2s;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Noto Sans", sans-serif;
+      font-optical-sizing: auto;
+      font-variation-settings: "wdth" 100;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.6;
+      background-color: var(--default-background-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── NAV ── */
+    nav {
+      width: 100%;
+      max-width: 800px;
+      padding: 20px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .nav-logo svg { width: 22px; height: 22px; }
+
+    /* ── MAIN ── */
+    main {
+      width: 100%;
+      max-width: 800px;
+      padding: 48px 32px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex: 1;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      width: 100%;
+      margin-bottom: 48px;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      color: var(--text-color);
+      margin-bottom: 12px;
+    }
+
+    .page-meta {
+      font-size: 0.85rem;
+      color: var(--text-color-secondary);
+    }
+
+    /* ── TOC ── */
+    .toc {
+      width: 100%;
+      display: flex;
+      gap: 12px;
+      margin-bottom: 56px;
+      animation: fadeUp 0.5s 0.08s ease both;
+    }
+
+    .toc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      text-decoration: none;
+      padding: 7px 14px;
+      border-radius: var(--default-border-radius);
+      border: 1px solid var(--surface-background-color-shade-10);
+      background: var(--surface-background-color-tint-10);
+      transition: all var(--default-transition-time);
+    }
+
+    .toc-link:hover {
+      background: var(--surface-background-color);
+      border-color: var(--surface-background-color-shade-20);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    /* ── DOCUMENT SECTIONS ── */
+    .doc-section {
+      width: 100%;
+      margin-bottom: 64px;
+      animation: fadeUp 0.5s 0.16s ease both;
+    }
+
+    .doc-section + .doc-section {
+      padding-top: 64px;
+      border-top: 2px solid var(--surface-background-color-shade-10);
+      animation-delay: 0.24s;
+    }
+
+    .doc-title {
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-color);
+      margin-bottom: 6px;
+    }
+
+    .doc-meta {
+      font-size: 0.82rem;
+      color: var(--text-color-secondary);
+      margin-bottom: 36px;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-color);
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: var(--text-color-secondary);
+      line-height: 1.7;
+    }
+
+    ul {
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    ul li {
+      font-size: 0.95rem;
+      color: var(--text-color-secondary);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover { text-decoration: underline; }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--surface-background-color-shade-10);
+    }
+
+    /* ── DARK MODE ── */
+    body.dark {
+      --text-color: #f5f7fa;
+      --text-color-secondary: #b0bcc9;
+      --primary-color-shade-10: #306bec;
+      --primary-color-shade-20: #3b73ed;
+      --secondary-color-shade-10: #9b69f1;
+      --secondary-color-tint-10: #6d28d9;
+      --border-color: #44464a;
+      --hover-border-color: #56585c;
+      --default-background-color: #242426;
+      --surface-background-color-tint-10: #2d2d2f;
+      --surface-background-color: #323234;
+      --surface-background-color-shade-10: #4b4b4e;
+      --surface-background-color-shade-20: #646468;
+      --surface-background-color-shade-30: #7d7d82;
+      --red-color: #ef4444;
+      --placeholder-color: #b8bec7;
+    }
+
+    /* ── THEME TOGGLE ── */
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #theme-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--surface-background-color-shade-10);
+      background: var(--surface-background-color-tint-10);
+      color: var(--text-color-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--default-transition-time);
+      padding: 0;
+    }
+
+    #theme-btn:hover {
+      background: var(--surface-background-color);
+      color: var(--text-color);
+      border-color: var(--surface-background-color-shade-20);
+    }
+
+    #theme-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      nav, main { padding-left: 20px; padding-right: 20px; }
+      .toc { flex-direction: column; }
+      .toc-link { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C8 2 5 5 5 9c0 2.4 1.1 4.5 2.9 5.9L8 18h8l.1-3.1C17.9 13.5 19 11.4 19 9c0-4-3-7-7-7z"/>
+        <path d="M9 21h6M10 18v3M14 18v3"/>
+      </svg>
+      Brainy
+    </a>
+    <div class="theme-toggle">
+      <button id="theme-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <div class="page-header">
+      <h1>Legal</h1>
+      <p class="page-meta">Privacy Policy and Terms of Service for Brainy</p>
+    </div>
+
+    <div class="toc">
+      <a class="toc-link" href="#privacy">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Privacy Policy
+      </a>
+      <a class="toc-link" href="#terms">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Terms of Service
+      </a>
+    </div>
+
+    <!-- ── PRIVACY POLICY ── -->
+    <div class="doc-section" id="privacy">
+      <h2 class="doc-title">Privacy Policy</h2>
+      <p class="doc-meta">Last updated: January 1, 2025</p>
+
+      <div class="content">
+
+        <div class="section">
+          <p>
+            This privacy policy explains how Brainy ("we," "us," or "our") collects, uses, and protects your personal data in compliance with regulations like the EU General Data Protection Regulation (GDPR).
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>1. What data do we collect?</h2>
+          <p>We collect the following personal identification information that you provide directly:</p>
+          <ul>
+            <li>First name</li>
+            <li>Last name</li>
+            <li>Email address</li>
+            <li>Username</li>
+            <li>Password (stored in a secure, hashed format)</li>
+          </ul>
+          <p>
+            <strong>Learning and Usage Data:</strong> Data generated from your activity within the App, such as your folder and files, reviews, and content within files.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>2. How do we collect your data?</h2>
+          <p>You directly provide us with all of the data we collect when you:</p>
+          <ul>
+            <li>Register for an account in the App.</li>
+            <li>Use the App. To maintain your progress across devices, data is automatically synced. You have full control over this feature and can disable automatic sync or trigger manual sync at any time.</li>
+          </ul>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>3. How will we use your data?</h2>
+          <p>We collect and process your data so that we can:</p>
+          <ul>
+            <li><strong>Manage your account and provide our service:</strong> To create your account and authenticate you.</li>
+            <li><strong>Synchronize your data:</strong> To ensure your learning progress and data are consistent and available across all devices where you are logged in.</li>
+            <li>Send you emails, including transactional service communications.</li>
+          </ul>
+          <p>
+            <strong>Legal Basis for Processing (EU GDPR):</strong> We process your personal data on the basis of performing our contract with you (Article 6(1)(b) GDPR) to provide the App's services. For any optional processing, we will ask for your clear consent.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>4. How do we store your data?</h2>
+          <p>We securely store your data on our servers. All data in transit is protected using TLS encryption.</p>
+          <p>
+            <strong>Data Retention:</strong> We retain your personal data for as long as your account is active. You can delete your account at any time via the App's settings. Upon account deletion, we will promptly remove your personal data from our primary production systems. Please note that some data may persist in our encrypted backup systems for a limited period before being automatically overwritten, as part of our standard disaster recovery procedures.
+          </p>
+          <p>
+            <strong>Automatic Deletion Due to Inactivity:</strong> To minimize unnecessary data retention, accounts with no sync activity for 6 consecutive months will be automatically deleted, along with all associated personal data. Upon deletion, your data will be removed in accordance with the erasure process described above. Please ensure you use the App regularly to avoid automatic deletion of your account.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>5. Marketing</h2>
+          <p>
+            We do not use your personal data for direct marketing. If this changes in the future, we will first obtain your explicit opt-in consent and provide you with a clear way to opt out at any time.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>6. Data Breach Notification</h2>
+          <p>
+            In the event of a personal data breach that poses a risk to your rights and freedoms, we will notify the relevant supervisory authority within 72 hours of becoming aware of it, as required by GDPR Article 33. Where the breach is likely to result in a high risk to you personally, we will also notify you directly without undue delay.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>7. What are your data protection rights?</h2>
+          <p>Under the GDPR, you have the following rights:</p>
+          <ul>
+            <li><strong>The right to access:</strong> You can request copies of your personal data.</li>
+            <li><strong>The right to rectification:</strong> You can request that we correct any information you believe is inaccurate.</li>
+            <li><strong>The right to erasure ("Right to be Forgotten"):</strong> You can request that we erase your personal data. This can be done at any time by you directly through the account deletion function in the App.</li>
+            <li><strong>The right to restrict processing:</strong> You can request that we restrict the processing of your personal data.</li>
+            <li><strong>The right to data portability:</strong> You can request that we transfer your data to another organization or directly to you in a machine-readable format, under certain conditions.</li>
+            <li><strong>The right to object to processing:</strong> You can object to our processing of your personal data.</li>
+          </ul>
+          <p>If you make a request, we have one month to respond. Please contact us using the details at the end of this policy to exercise any of these rights.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>8. What are cookies?</h2>
+          <p>
+            Cookies are small text files placed on your device by websites and applications to store information. In our application, we use cookies specifically to maintain your secure login session, allowing you to stay signed in between app uses.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>9. How do we use cookies?</h2>
+          <p>We use cookies for a single, essential purpose:</p>
+          <ul>
+            <li><strong>Authentication:</strong> To keep you securely signed in to your account across sessions.</li>
+          </ul>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>10. What types of cookies do we use?</h2>
+          <p>
+            We use only strictly necessary (functional) cookies. These cookies are essential for the core service you request (a persistent, secure login) and do not serve any marketing, analytics, or tracking purposes. Without them, the feature of remaining logged in would not work.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>11. How to manage cookies</h2>
+          <p>
+            As these cookies are essential for a core function of the App, they cannot be disabled without breaking the login feature. However, you can effectively clear these cookies at any time by logging out of the App through your account settings. This action will remove the session cookie and require you to log in again on next use.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>12. Privacy policies of other websites</h2>
+          <p>Our App may contain links to other websites. This privacy policy applies only to our App.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>13. Changes to our privacy policy</h2>
+          <p>We keep our privacy policy under regular review and will place any updates on this page or within the App.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>14. How to contact us</h2>
+          <p>
+            If you have questions, wish to exercise your data rights, or have concerns about this privacy policy, please contact us via our <a href="https://discord.com/invite/H9bEfqDb8a" target="_blank">Discord community</a> or by opening an issue on <a href="https://github.com/ramikw/brainy/issues/new" target="_blank">GitHub</a>.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── TERMS OF SERVICE ── -->
+    <div class="doc-section" id="terms">
+      <h2 class="doc-title">Terms of Service</h2>
+      <p class="doc-meta">Last updated: January 1, 2025</p>
+
+      <div class="content">
+
+        <div class="section">
+          <h2>1. Acceptance of Terms</h2>
+          <p>
+            By creating an account or using Brainy, you agree to these Terms of Service ("Terms"). If you do not agree, please do not use the App. These Terms form a legally binding agreement between you and Brainy.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>2. Description of Service</h2>
+          <p>
+            Brainy is an active learning app that lets you create, manage, and review learning materials using spaced repetition. The App communicates with our servers solely to sync your data across your devices.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>3. Eligibility</h2>
+          <p>
+            You must be at least 13 years old to use the App. By registering, you confirm you meet this requirement. If you are between 13 and 15, you confirm that you have obtained the consent of a parent or legal guardian, as required in some EU member states.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>4. Accounts and Storage</h2>
+          <p>
+            You are responsible for keeping your account credentials secure and for all activity under your account. You may only create one account per person — creating multiple accounts to circumvent limits is prohibited and may result in termination of all associated accounts.
+          </p>
+          <p>Each account is provided with 100 MB of storage. When this limit is reached, syncing will be paused until you free up space.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>5. Acceptable Use</h2>
+          <p>You agree not to use the App to upload, share, or distribute content that:</p>
+          <ul>
+            <li>Contains malware, viruses, or other malicious code.</li>
+            <li>Infringes third-party intellectual property rights or violates any applicable law.</li>
+            <li>Is abusive, harassing, defamatory, or harmful to other users.</li>
+          </ul>
+          <p>You also agree not to intentionally overload our infrastructure, attempt unauthorised access to our systems, or exploit the App in any way not permitted by these Terms.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>6. Shared Learning Materials</h2>
+          <p>
+            Brainy allows you to manually export your learning files to share with others outside the App. We provide no automated sharing service — any distribution of exported files is done entirely at your own discretion and responsibility. By exporting and sharing content, you confirm that you have the right to do so and that the content complies with these Terms. You retain ownership of your original content. We are not responsible for how exported files are used or distributed once they leave the App.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>7. Account Termination and Inactivity</h2>
+          <p>
+            You may delete your account at any time through the App's settings. Accounts with no sync activity for 6 consecutive months are automatically and permanently deleted with no prior notice. We also reserve the right to suspend or terminate accounts in material breach of these Terms. All deletions are permanent and irreversible.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>8. Limitation of Liability</h2>
+          <p>
+            The App is provided "as is." To the extent permitted by EU law, we are not liable for indirect or consequential damages arising from your use of the App. Nothing in these Terms limits liability that cannot be excluded under applicable EU consumer protection law.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>9. Changes to These Terms</h2>
+          <p>
+            We may update these Terms. For material changes, we will notify you by email or in-app notice before they take effect. Continued use of the App after that date constitutes acceptance.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>10. Governing Law</h2>
+          <p>
+            These Terms are governed by and construed in accordance with the laws of Norway. Any disputes shall be subject to the jurisdiction of the Norwegian courts. As Norway is part of the EEA, GDPR applies and you benefit from the mandatory consumer protections of your country of residence.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h2>11. Contact Us</h2>
+          <p>
+            If you have any questions about these Terms, please reach out via our <a href="https://discord.com/invite/H9bEfqDb8a" target="_blank">Discord community</a> or by opening an issue on <a href="https://github.com/ramikw/brainy/issues/new" target="_blank">GitHub</a>.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    const btn = document.getElementById('theme-btn');
+    const moon = document.getElementById('icon-moon');
+    const sun = document.getElementById('icon-sun');
+    const body = document.body;
+
+    const stored = localStorage.getItem('brainy-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (stored === 'dark' || (!stored && prefersDark)) setDark(true);
+
+    btn.addEventListener('click', () => setDark(!body.classList.contains('dark')));
+
+    function setDark(on) {
+      body.classList.toggle('dark', on);
+      moon.style.display = on ? 'none' : '';
+      sun.style.display  = on ? '' : 'none';
+      localStorage.setItem('brainy-theme', on ? 'dark' : 'light');
+    }
+  </script>
+
+</body>
+</html>
